@@ -1,19 +1,19 @@
 schema_version: 1
 
 context:
-  name: ebcdic
-  version: "2.0.0"
+  version: 2.0.1
+  build_number: '0'
 
 package:
-  name: ${{ name|lower }}
+  name: ebcdic
   version: ${{ version }}
 
 source:
-  url: https://github.com/roskakori/CodecMapper/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: bc70216a1b8d49fb3ccc6d374b0a50a9f1f9ee40e83380fbec2ffa3da068e6a5
+- url: https://files.pythonhosted.org/packages/source/e/ebcdic/ebcdic-${{ version }}.tar.gz
+  sha256: 3a1bedfbeee76cab2d7e4de62409ac015cd7afb25d590fe1546105c32a065cf1
 
 build:
-  number: 1
+  number: 0
   noarch: python
   script: cd ${{ name }}; ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
@@ -32,7 +32,7 @@ tests:
         - ebcdic
       pip_check: true
       python_version:
-        - ${{ python_min }}
+        - ${{ python_min }}.*
         - "*"
 
 about:
